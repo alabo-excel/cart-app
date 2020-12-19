@@ -31,9 +31,7 @@
 <script>
 export default {
   data() {
-    return {
-      indexes: [],
-    };
+    return {};
   },
   computed: {
     products() {
@@ -42,29 +40,28 @@ export default {
     productsCart() {
       return this.$store.state.productsCart;
     },
+    indexes() {
+      return this.$store.state.indexes;
+    },
   },
   methods: {
     addToCart(index) {
       length = this.productsCart.length;
+      var produce = this.products[index];
+
       if (length === 0) {
         this.productsCart.push(this.products[index]);
         this.indexes.push(index);
       } else {
         if (this.indexes.includes(index)) {
           console.log("sure");
-          this.productsCart[length].qty++
+          produce.qty++;
+          // produce.price = produce.price * produce.qty;
         } else {
           this.indexes.push(index);
-          this.productsCart.push(this.products[index]);
+          this.productsCart.push(produce);
         }
       }
-      // this.productsCart.push(this.products[index]);
-
-      // if (produce.name === this.productsCart[0].name) {
-      //   console.log("sure");
-      // } else {
-      //   console.log("nah");
-      // }
     },
   },
 };

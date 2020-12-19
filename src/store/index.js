@@ -14,6 +14,8 @@ export default new Vuex.Store({
             { name: 'red shoe', img: require('../assets/shoe4.jpg'), price: 120, qty: 1 },
         ],
         productsCart: [],
+              indexes: [],
+
     },
     mutations: {},
     actions: {},
